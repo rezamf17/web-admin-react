@@ -13,6 +13,7 @@ import {
     Typography,
     Button,
     Grid,
+    Collapse 
 } from '@mui/material'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import HomeIcon from '@mui/icons-material/Home';
@@ -20,10 +21,14 @@ import WhatshotIcon from '@mui/icons-material/Whatshot';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { Link } from "react-router-dom";
 import { styled, useTheme } from '@mui/material/styles';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import AccessibilityIcon from '@mui/icons-material/Accessibility';
 
 const drawerWidth = 240;
 const Navigation = () => {
     const [open, setOpen] = useState(true);
+    const [openFreeFire, setOpenFreeFire] = useState(true);
     const theme = useTheme();
 
     const handleDrawerClose = () => {
@@ -32,7 +37,11 @@ const Navigation = () => {
 
     const handleDrawerOpen = () => {
         setOpen(true);
-      };
+    };
+    const handleClick = () => {
+        setOpenFreeFire(!openFreeFire);
+    };
+
     const DrawerHeader = styled('div')(({ theme }) => ({
         display: 'flex',
         alignItems: 'center',
@@ -114,13 +123,24 @@ const Navigation = () => {
             </ListItemButton> */}
                     </ListItem>
                     <ListItem disablePadding>
-                        <ListItemButton component={Link} to="/free-fire">
+                        <ListItemButton  onClick={handleClick}>
                             <ListItemIcon>
                                 <WhatshotIcon />
                             </ListItemIcon>
                             <ListItemText primary="Free Fire"></ListItemText>
+                            {openFreeFire ? <ExpandLess /> : <ExpandMore />}
                         </ListItemButton>
                     </ListItem>
+                    <Collapse in={openFreeFire} timeout="auto" unmountOnExit component={Link} to="/free-fire">
+                        <List component="div" disablePadding>
+                            <ListItemButton sx={{ pl: 4 }}>
+                                <ListItemIcon>
+                                    <AccessibilityIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Characters" />
+                            </ListItemButton>
+                        </List>
+                    </Collapse>
                 </List>
             </Drawer>
         </div>

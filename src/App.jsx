@@ -6,7 +6,7 @@ import {
   Box,
 } from '@mui/material'
 import Home from './pages/home'
-import FreeFire from './pages/FreeFire'
+import FreeFireCharacters from './pages/FreeFire/FreeFireCharacters'
 import Navigation from './components/navigation';
 import { Routes, Route } from 'react-router-dom'
 const drawerWidth = 240;
@@ -48,7 +48,7 @@ function App() {
         <Main open={open}>
           <DrawerHeader />
         <Routes>
-          <Route path='/free-fire' element={<FreeFire />} />
+          <Route path='/free-fire' element={<FreeFireCharacters />} />
           <Route path='/' element={<Home />} />
         </Routes>
           {/* <Home /> */}

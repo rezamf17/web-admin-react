@@ -97,7 +97,7 @@ const Navigation = () => {
                     </IconButton>
                 </DrawerHeader>
                 <Divider />
-                <List>
+                <List component="div" disablePadding>
                     {/* {['All mail', 'Trash', 'Spam'].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
@@ -131,9 +131,9 @@ const Navigation = () => {
                             {openFreeFire ? <ExpandLess /> : <ExpandMore />}
                         </ListItemButton>
                     </ListItem>
-                    <Collapse in={openFreeFire} timeout="auto" unmountOnExit component={Link} to="/free-fire">
+                    <Collapse in={openFreeFire} timeout="auto" unmountOnExit component={Link} to="/free-fire-characters">
                         <List component="div" disablePadding>
-                            <ListItemButton sx={{ pl: 4 }}>
+                            <ListItemButton sx={{ pl: 4 }} primary="ca">
                                 <ListItemIcon>
                                     <AccessibilityIcon />
                                 </ListItemIcon>

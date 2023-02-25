@@ -4,30 +4,133 @@ import {
     Breadcrumbs,
     Link,
     Card,
-    CardContent
+    CardContent,
+    Table,
+    TableBody,
+    TableContainer,
+    TableHead,
+    TableRow,
+    TableCell,
+    IconButton,
+    Button
 } from '@mui/material'
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import { Link as RouterLink } from 'react-router-dom';
 
 function FreeFireCharacters() {
-  return (
-    <div>
-    <Breadcrumbs aria-label="breadcrumb">
-        <Link underline="hover" color="inherit" href="/">
-            Free Fire
-        </Link>
-        <Typography color="text.primary">Free Fire Characters</Typography>
-    </Breadcrumbs>
-    <Card>
-    <CardContent>
-        asdasd
-    </CardContent>
-        <Typography paragraph>
-            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
 
-            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
-        </Typography>
-    </Card>
-    </div>
-  )
+    const rows = [
+        {
+            id: 1,
+            name: "Marianna",
+            gender: "Female",
+            price: "500",
+            dob: "2000-05-22",
+            occupation: "Hairstlyist",
+            hobby: "Cooking",
+            ability: "-",
+            story: "-",
+            created_at: "2023-02-04T13:31:08.000000Z",
+            updated_at: "2023-02-04T13:31:26.000000Z",
+            deleted_at: null,
+            free_fire_level: [
+                {
+                    id: 1,
+                    id_character: 1,
+                    character_name: "Marianna",
+                    level: "1",
+                    required_fragments: "None",
+                    desc: "Reduce damage when outside safe zone by 4%.",
+                    reward: "-",
+                    created_at: "2023-02-04T13:31:08.000000Z",
+                    updated_at: "2023-02-04T13:31:26.000000Z",
+                    deleted_at: null
+                },
+                {
+                    id: 2,
+                    id_character: 1,
+                    character_name: "Marianna",
+                    level: "2",
+                    required_fragments: "100",
+                    desc: "Reduce damage when outside safe zone by 8%.",
+                    reward: "-",
+                    created_at: "2023-02-04T13:31:08.000000Z",
+                    updated_at: "2023-02-04T13:31:26.000000Z",
+                    deleted_at: null
+                },
+                {
+                    id: 3,
+                    id_character: 1,
+                    character_name: "Marianna",
+                    level: "3",
+                    required_fragments: "100",
+                    desc: "Reduce damage when outside safe zone by 16%.",
+                    reward: "-",
+                    created_at: "2023-02-04T13:31:08.000000Z",
+                    updated_at: "2023-02-04T13:31:26.000000Z",
+                    deleted_at: null
+                }
+            ]
+        }
+    ];
+    return (
+        <div>
+            <Breadcrumbs aria-label="breadcrumb">
+                <Link underline="hover" color="inherit" href="/">
+                    Free Fire
+                </Link>
+                <Typography color="text.primary" >Free Fire Characters</Typography>
+            </Breadcrumbs>
+            <Card>
+                <CardContent>
+                    <Button color='error' variant="contained" sx={{float : 'right'}} component={RouterLink} to={`/free-fire-characters/add`}>Add Character</Button>
+                    <TableContainer>
+                        <Table
+                            sx={{ minWidth: 750 }}
+                            aria-labelledby="tableTitle"
+                        >
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>No</TableCell>
+                                    <TableCell>Character Name</TableCell>
+                                    <TableCell>Gender</TableCell>
+                                    <TableCell>Price</TableCell>
+                                    <TableCell>Actions</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {
+                                    rows.map((items, i) => {
+                                        return (
+                                            <TableRow key={i}>
+                                                <TableCell>{i + 1}</TableCell>
+                                                <TableCell>{items.name}</TableCell>
+                                                <TableCell>{items.gender}</TableCell>
+                                                <TableCell>{items.price}</TableCell>
+                                                    <TableCell>
+                                                        <IconButton component={RouterLink} to={`/free-fire-characters/detail`}>
+                                                            <VisibilityIcon />
+                                                        </IconButton>
+                                                        <IconButton>
+                                                            <EditIcon />
+                                                        </IconButton>
+                                                        <IconButton>
+                                                            <DeleteIcon />
+                                                        </IconButton>
+                                                    </TableCell>
+                                            </TableRow>
+                                        )
+                                    })
+                                }
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                </CardContent>
+            </Card>
+        </div>
+    )
 }
 
 export default FreeFireCharacters

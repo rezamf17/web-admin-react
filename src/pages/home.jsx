@@ -1,13 +1,21 @@
 import React from 'react'
-import { Typography } from '@mui/material'
+import { Typography, 
+          Breadcrumbs,
+          Link
+} from '@mui/material'
 
 const home = () => {
   return (
     <div>
-        <Typography paragraph variant='h3'>
-          Selamat Datang Di Web Admin
-        </Typography>
-   
+      <Breadcrumbs aria-label="breadcrumb">
+        <Link underline="hover" color="inherit" href="/">
+          Home
+        </Link>
+      </Breadcrumbs>
+      <Typography paragraph variant='h3'>
+        Selamat Datang Di Web Admin
+      </Typography>
+
     </div>
   )
 }

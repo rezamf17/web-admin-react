@@ -7,6 +7,8 @@ import {
 } from '@mui/material'
 import Home from './pages/home'
 import FreeFireCharacters from './pages/FreeFire/FreeFireCharacters'
+import FreeFireCharacterDetail from './pages/FreeFire/FreeFireCharacterDetail'
+import FreeFireCharacterAdd from './pages/FreeFire/FreeFireCharacterAdd'
 import Navigation from './components/navigation';
 import { Routes, Route } from 'react-router-dom'
 const drawerWidth = 240;
@@ -48,7 +50,9 @@ function App() {
         <Main open={open}>
           <DrawerHeader />
         <Routes>
-          <Route path='/free-fire' element={<FreeFireCharacters />} />
+          <Route path='/free-fire-characters' element={<FreeFireCharacters />} />
+          <Route path='/free-fire-characters/detail' element={<FreeFireCharacterDetail />} />
+          <Route path='/free-fire-characters/add' element={<FreeFireCharacterAdd />} />
           <Route path='/' element={<Home />} />
         </Routes>
           {/* <Home /> */}
